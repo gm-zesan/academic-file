@@ -79,7 +79,7 @@
             <a href="{{ route('admin.courses.index') }}"
             class="{{ in_array(Route::currentRouteName(), ['admin.courses.index','admin.courses.create','admin.courses.edit']) ? 'active-focus' : '' }}">
                 <i class="ri-book-open-line"></i>
-                <span class="link_names">Manage Courses</span>
+                <span class="link_names"> @if(Auth::user()->hasRole('admin')) Manage Courses @else My Courses @endif</span>
             </a>
         </li>
         @endcanany
