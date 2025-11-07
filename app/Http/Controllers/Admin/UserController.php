@@ -61,6 +61,7 @@ class UserController extends Controller implements HasMiddleware
             $validated['image'] = $request->file('image')->store('all-users', 'public');
         }
         $validated['password'] = bcrypt($request->password);
+        $validated['current_term_id'] = Auth::user()->current_term_id;
         $user = User::create($validated);
         $user->assignRole('user');
         return redirect()->route('admin.users.index')->with('success','User created successfully');

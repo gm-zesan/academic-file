@@ -27,8 +27,8 @@
                                 </ol> 
                             </nav>
                         </div>
-                        @if (Auth::user()->hasRole('superadmin'))
-                            <a href="{{route('roles.create')}}" class="add-new">New Role<i class="ms-1 ri-add-line"></i></a>
+                        @if (Auth::user()->hasRole('admin'))
+                            <a href="{{route('admin.roles.create')}}" class="add-new">New Role<i class="ms-1 ri-add-line"></i></a>
                         @endif
                     </div>
                     <div class="card-body" style="overflow-x: auto">
@@ -80,7 +80,7 @@
                             var btns = '';
                             btns += '<div class="action-btn">';
                             btns += '<a href="' + SITEURL + '/admin/roles/' + data.id + '/edit"title="edit" class="btn btn-edit"><i class="ri-edit-line"></i></a>';
-                            if(data.role == 'superadmin'){
+                            if(data.role == 'admin'){
                                 btns += '<form action="' + SITEURL + '/admin/roles/' + data.id + '" method="POST" style="display: inline;" onsubmit="return confirm(\'Are you sure to delete this role?\');">' +
                                     '@csrf' +
                                     '@method("DELETE")' +

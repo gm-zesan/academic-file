@@ -88,7 +88,10 @@ function categoryPath($cat, $allCategories) {
                                     <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                                         <div>
                                             <h5 class="mb-0">{{ $course->name }}</h5>
-                                            <small>Code: {{ $course->code }} ({{ $course->type->name }})</small>
+                                            <small>
+                                                <span class="fw-bold">Code: </span>{{ $course->code }},
+                                                <span class="fw-bold">Batch: </span>{{ $course->batch->name }} ({{ $course->term->name }})
+                                            </small>
                                         </div>
                                         <small>Teacher: {{ $course->teacher?->name ?? 'N/A' }}</small>
                                     </div>
@@ -116,6 +119,21 @@ function categoryPath($cat, $allCategories) {
                                                         </td>
                                                         <td>
                                                             @if($file)
+
+                                                            @if($file->approved)
+                                                                <span class="badge bg-success">Approved</span>
+                                                                <i class="ri-check-line text-success" title="Approved"></i>
+                                                            @else
+                                                                <form action="{{ route('admin.files.approve', $file->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure to approve this file?');">
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-sm btn-outline-success" title="Approve File">
+                                                                        Approve
+                                                                    </button>
+                                                                </form>
+                                                            @endif
+
+                                                            
+
                                                                 <a href="{{ Storage::url($file->file_path) }}" target="_blank" class="btn btn-sm  btn-outline-primary" title="{{ $file->original_name }}">
                                                                     view
                                                                 </a>

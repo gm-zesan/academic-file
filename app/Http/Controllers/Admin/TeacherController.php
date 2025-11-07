@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
 
@@ -46,6 +47,7 @@ class TeacherController extends Controller
             $validated['image'] = $request->file('image')->store('all-users', 'public');
         }
         $validated['password'] = bcrypt($request->password);
+        $validated['current_term_id'] = Auth::user()->current_term_id;
         $user = User::create($validated);
         $user->assignRole('user');
         return redirect()->route('admin.teachers.index')->with('success','Teacher created successfully');

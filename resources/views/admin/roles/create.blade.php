@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="container-fluid my-3">
-        <form  action="{{ route('roles.store') }}" method="POST">
+        <form  action="{{ route('admin.roles.store') }}" method="POST">
             @csrf
             <div class="row g-4">
                 <div class="col-md-8 col-12">
@@ -18,13 +18,13 @@
                                             <a href="{{route('dashboard')}}">Dashboard</a>
                                         </li> 
                                         <li class="breadcrumb-item">
-                                            <a href="{{route('roles.index')}}">Role</a>
+                                            <a href="{{route('admin.roles.index')}}">Role</a>
                                         </li> 
                                         <li class="breadcrumb-item active" aria-current="page"> Create Role</li> 
                                     </ol> 
                                 </nav>
                             </div>
-                            <a href="{{route('roles.index')}}" class="add-new">Role<i class="ms-1 ri-list-ordered-2"></i></a>
+                            <a href="{{route('admin.roles.index')}}" class="add-new">Role<i class="ms-1 ri-list-ordered-2"></i></a>
                         </div>
                         <div class="card-body custom-form">
                             
@@ -99,7 +99,7 @@
                                             </button>
                                         </div>
                                         <div class="col-6">
-                                            <a href="{{route('roles.index')}}" class="btn leave-button">Leave</a>
+                                            <a href="{{route('admin.roles.index')}}" class="btn leave-button">Leave</a>
                                         </div>
                                     </div>
                                 </div>

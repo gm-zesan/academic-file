@@ -36,16 +36,16 @@ class RoleController extends Controller implements HasMiddleware
     {
         if ($request->ajax()) {
             $auth_user = Auth::user();
-            if ($auth_user->hasRole('superadmin')) {
+            if ($auth_user->hasRole('admin')) {
                 $roles = Role::get()->all();
             } else {
-                $roles = Role::where('name','!=', 'superadmin')->get()->all();
+                $roles = Role::where('name','!=', 'admin')->get()->all();
             }
             return DataTables::of($roles)
                 ->addIndexColumn()
                 ->addColumn('action-btn', function($row) {
                     $auth_user = Auth::user();
-                    if($auth_user->hasRole('superadmin')){
+                    if($auth_user->hasRole('admin')){
                         $roleMatch = [
                             'id' => $row->id,
                             'role' => $auth_user->roles->first()->name ?? null,

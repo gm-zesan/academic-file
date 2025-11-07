@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/course/{course}', [FileController::class,'showCategories'])->name('categories');
             Route::post('/', [FileController::class, 'store'])->name('store');
             Route::get('/monitor', [FileController::class, 'monitorFiles'])->name('monitor');
+            Route::post('/{file}/approve', [FileController::class, 'approveFile'])->name('approve');
         });
 
         Route::resource('requests', RequestController::class)->only(['index','update']);

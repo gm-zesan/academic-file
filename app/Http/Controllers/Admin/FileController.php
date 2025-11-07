@@ -95,6 +95,7 @@ class FileController extends Controller implements HasMiddleware
                 'original_name' => $request->file('file')->getClientOriginalName(),
                 'mime_type'     => $request->file('file')->getClientMimeType(),
                 'size'          => $request->file('file')->getSize(),
+                'approved'      => false,
             ]);
         } else {
             // Create a new record if not exists
@@ -106,6 +107,7 @@ class FileController extends Controller implements HasMiddleware
                 'original_name' => $request->file('file')->getClientOriginalName(),
                 'mime_type'     => $request->file('file')->getClientMimeType(),
                 'size'          => $request->file('file')->getSize(),
+                'approved'      => false,
             ]);
         }
 
@@ -149,6 +151,14 @@ class FileController extends Controller implements HasMiddleware
     public function destroy(File $file)
     {
         //
+    }
+
+    public function approveFile(File $file)
+    {
+        $file->approved = true;
+        $file->save();
+
+        return redirect()->back()->with('success', 'File approved successfully!');
     }
 
     public function download($id)
