@@ -37,9 +37,9 @@
             {{ __('Log in') }}
         </x-primary-button>
 
-        <div class="no-account">
+        {{-- <div class="no-account">
             <a href="{{ route('register') }}">Don't have an account? Register</a>
-        </div>
+        </div> --}}
 
     </form>
 </x-guest-layout>

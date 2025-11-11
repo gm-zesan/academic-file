@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Academic File Management - Green University of Bangladesh</title>
+
+    {{-- favicon --}}
+    <link rel="icon" type="image/png" href="{{ asset('images/swe-logo.svg') }}" />
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -32,17 +35,20 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="logo-section">
-                <div class="logo">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23ffffff'/%3E%3Ctext x='50' y='58' text-anchor='middle' font-family='Arial' font-size='24' font-weight='bold' fill='%2300d4aa'%3EGUB%3C/text%3E%3C/svg%3E" alt="GUB Logo">
+                <div class="" style="display:flex;align-items:center;gap:12px;">
+                    <!-- University logo -->
+                    <img src="{{ asset('images/gublogo.jpg') }}" alt="GUB Logo" class="site-logo" style="height:56px;object-fit:contain;" />
+                    <!-- Department / SWE logo -->
+                    <img src="{{ asset('images/swe-logo.svg') }}" alt="SWE Logo" class="dept-logo" style="height:44px;object-fit:contain;" />
                 </div>
                 <div class="logo-text">
-                    <h1>Academic Portal</h1>
-                    <p>Green University</p>
+                    <h1>Course File Management  System</h1>
+                    <p>Department of Software Engineering</p>
                 </div>
             </div>
             <div class="nav-links">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#features" class="nav-link">Features</a>
+                {{-- <a href="#home" class="nav-link">Home</a>
+                <a href="#features" class="nav-link">Features</a> --}}
                 @if (Route::has('login'))
                     @auth
                         <a href="{{ url('/dashboard') }}" class="nav-link login-btn"><span>Dashboard</span></a>
@@ -228,7 +234,7 @@
         <div class="footer-container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h3>Green University Academic Portal</h3>
+                    <h3>Course File Management  System</h3>
                     <p>Pioneering the future of education through innovative technology and academic excellence. Transforming how students and faculty interact with digital resources.</p>
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
@@ -264,7 +270,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 Green University of Bangladesh. All rights reserved. | Transforming education through innovative technology solutions.</p>
+                <p>&copy; {{ date('Y') }} Green University of Bangladesh. All rights reserved. | Transforming education through innovative technology solutions.</p>
             </div>
         </div>
     </footer>
