@@ -26,8 +26,10 @@
             <div class="content-body">
                 @yield('content')
             </div>
+            @include('admin.includes.footer')
         </div>
     </div>
+    
     @include('admin.includes.scripts')
     @stack('custom-scripts')
 </body>
